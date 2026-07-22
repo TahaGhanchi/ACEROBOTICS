@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>THS Ace Robotics 72 | VEX 21503A</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" href="https://cdn.phototourl.com/free/2026-07-22-388f880c-f39d-4099-a360-6cf963bf00fd.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --gold: #e8b923;
+      --gold-dark: #b8860b;
+      --black: #080808;
+      --gray: #666;
+      --border: #e5e5e5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: white;
+      color: #090909;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* ANIMATIONS */
+    .fade {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp .8s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay1 {
+      animation-delay: .15s;
+    }
+
+    .delay2 {
+      animation-delay: .3s;
+    }
+
+    .delay3 {
+      animation-delay: .45s;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 18px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .logo {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .gold {
+      color: var(--gold-dark);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav li {
+      font-size: 14px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    nav li:hover {
+      color: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    /* MOBILE TOGGLE BUTTON */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #090909;
+      cursor: pointer;
+      z-index: 1001;
+      padding: 8px;
+      margin-left: auto;
+      /* Ensures hamburger pushes to the far right on mobile */
+      transition: transform 0.2s ease;
+    }
+
+    .menu-toggle:focus {
+      outline: none;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 30px;
+      border-radius: 999px;
+      background:
+        linear-gradient(135deg,
+          #ffd84d,
+          #c99700);
+      font-weight: 800;
+      color: black;
+      border: none;
+      cursor: pointer;
+      transition: .3s;
+      box-shadow:
+        0 10px 25px rgba(232, 185, 35, .25);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 18px 40px rgba(232, 185, 35, .35);
+    }
+
+    .btn-dark {
+      background: #080808;
+      color: white;
+      box-shadow: none;
+    }
+
+    .btn-dark:hover {
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, .3);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 8%;
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 40px;
+    }
+
+    .title::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, .05);
+      transition: .35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow:
+        0 20px 45px rgba(232, 185, 35, .18);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .muted {
+      color: var(--gray);
+    }
+
+    /* DARK SECTION */
+    .dark {
+      background: #080808;
+      color: white;
+    }
+
+    .dark .card {
+      background: #111;
+      border-color: #222;
+    }
+
+    .dark .card:hover {
+      border-color: var(--gold);
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at top,
+          #fff2b8,
+          white 50%);
+    }
+
+    .hero-logo {
+      height: 160px;
+      width: 160px;
+      border-radius: 35px;
+      object-fit: cover;
+      margin: 0 auto 30px;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, .15);
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 90px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      color: var(--gold-dark);
+    }
+
+    .hero p {
+      font-size: 22px;
+      color: var(--gray);
+      margin: 25px 0 35px;
+    }
+
+    /* SOCIAL */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .social {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: white;
+      transition: .3s;
+    }
+
+    .social:hover {
+      background: var(--gold);
+      color: black;
+      transform: translateY(-5px);
+    }
+
+    /* MOBILE RESPONSIVE STYLES */
+    @media(max-width:900px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease-in-out;
+      }
+
+      nav ul.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      nav li {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+
+</head>
+
+<body id="top">
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <a href="#top" class="logo-area" class="nav-link">
+
+      <img class="logo" src="https://cdn.phototourl.com/free/2026-07-22-388f880c-f39d-4099-a360-6cf963bf00fd.png" alt="THS Ace Robotics 72 Logo">
+
+      <span>
+
+        THS ACE <span class="gold">ROBOTICS 72</span>
+
+      </span>
+
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+
+      <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+    <ul id="navLinks">
+
+      <li><a href="#about" class="nav-link">About Us</a></li>
+
+      <li><a href="#join" class="nav-link">Join Club</a></li>
+
+      <li><a href="#team" class="nav-link">Meet Team</a></li>
+
+      <li><a href="#sponsors" class="nav-link">Sponsors</a></li>
+
+      <li><a href="#resources" class="nav-link">Resources</a></li>
+
+      <li><a href="#login" class="nav-link">Member Login</a></li>
+
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div>
+
+      <img class="hero-logo fade" src="https://cdn.phototourl.com/free/2026-07-22-388f880c-f39d-4099-a360-6cf963bf00fd.png" alt="THS Ace Robotics 72 Logo">
+
+      <h1 class="fade delay1">
+
+        THS ACE
+
+        <br>
+
+        <span>
+
+          ROBOTICS 72
+
+        </span>
+
+      </h1>
+
+      <p class="fade delay2">
+
+        VEX Robotics Team 21503A
+
+        <br>
+
+        2023 CTFTC State Winning Alliance Captain
+
+        <br>
+
+        Engineering • Innovation • Competition
+
+      </p>
+
+      <div class="fade delay3">
+
+        <a class="btn" href="#join">
+
+          Join Team
+
+        </a>
+
+        <a class="btn btn-dark" href="#sponsors">
+
+          Sponsor Us
+
+        </a>
+
+      </div>
+
+      <div class="socials">
+
+        <a class="social" href="https://www.instagram.com/thsacerobotics72/" target="_blank" rel="noopener">
+
+          <i class="fa-brands fa-instagram"></i>
+
+        </a>
+
+        <a class="social" href="https://github.com/Tyrannolavan/21503A_2027" target="_blank" rel="noopener">
+
+          <i class="fa-brands fa-github"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT US -->
+
+  <section id="about">
+
+    <h2 class="title">
+
+      About Us
+
+    </h2>
+
+    <div class="card">
+
+      <p>
+
+        THS Ace Robotics 72 is Trumbull High School's VEX Robotics Competition team.
+
+        We design, build, and program competitive robots while developing engineering,
+
+        leadership, and teamwork skills, competing in the VEX V5 Robotics Competition.
+
+      </p>
+
+      <br>
+
+      <a class="btn" href="https://www.vexrobotics.com/v5/competition/vrc-current-game" target="_blank" rel="noopener">
+
+        VEX V5 Robotics Competition:
+
+        Override | 2026-2027 Game
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ENGINEERING -->
+
+  <section class="dark">
+
+    <h2 class="title">
+
+      Our Engineering
+
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>
+
+          Programming
+
+        </h3>
+
+        <p>
+
+          C++, Autonomous Systems,
+
+          <br>
+
+          Sensors
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Mechanical
+
+        </h3>
+
+        <p>
+
+          CAD, Building,
+
+          <br>
+
+          Testing
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Strategy
+
+        </h3>
+
+        <p>
+
+          Competition Analysis,
+
+          <br>
+
+          Driver Training
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JOIN CLUB -->
+
+  <section id="join">
+
+    <h2 class="title">
+
+      Join Club
+
+    </h2>
+
+    <div class="card">
+
+      <h3>
+
+        No experience required.
+
+      </h3>
+
+      <br>
+
+      <p>
+
+        Learn:
+
+        <br><br>
+
+        ⚙ Robotics
+
+        <br>
+
+        💻 Coding
+
+        <br>
+
+        🔩 Engineering
+
+        <br>
+
+        🏆 Competition
+
+      </p>
+
+      <br>
+
+      <!-- Disabled for now -->
+
+      <button class="btn" type="button">
+
+        Apply Now
+
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- TEAM -->
+
+  <section id="team">
+
+    <h2 class="title">
+
+      Meet The Team
+
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>
+
+          Mr. Amaturo
+
+        </h3>
+
+        <p class="muted">
+
+          VEX Team 21503A Advisor
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Rebecca
+
+        </h3>
+
+        <p class="muted">
+
+          Vice President and Team Manager
+
+          <br>
+
+          Third Year
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Jason
+
+        </h3>
+
+        <p class="muted">
+
+          Co-Design and Build Manager
+
+          <br>
+
+          Second Year
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Neel
+
+        </h3>
+
+        <p class="muted">
+
+          Co-Design and Build Manager
+
+          <br>
+
+          First Year with past experience
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Lavan
+
+        </h3>
+
+        <p class="muted">
+
+          Lead Programmer
+
+          <br>
+
+          Third Year
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SPONSORS -->
+
+  <section id="sponsors">
+
+    <h2 class="title">
+
+      Become A Sponsor
+
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>
+
+          Bronze
+
+        </h3>
+
+        <h2 class="gold">
+
+          $100
+
+        </h2>
+
+        <p>
+
+          Logo Recognition
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Silver
+
+        </h3>
+
+        <h2 class="gold">
+
+          $500
+
+        </h2>
+
+        <p>
+
+          Social Media Promotion
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Gold
+
+        </h3>
+
+        <h2 class="gold">
+
+          $1000
+
+        </h2>
+
+        <p>
+
+          Website + Robot Branding
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Platinum
+
+        </h3>
+
+        <h2 class="gold">
+
+          $2500+
+
+        </h2>
+
+        <p>
+
+          Major Partnership
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RESOURCES -->
+
+  <section id="resources" class="dark">
+
+    <h2 class="title">
+
+      Resources
+
+    </h2>
+
+    <div class="grid">
+
+      <div class="card">
+
+        <h3>
+
+          GitHub Repository
+
+        </h3>
+
+        <p>
+
+          21503A_2027
+
+        </p>
+
+        <br>
+
+        <a class="btn" href="https://github.com/Tyrannolavan/21503A_2027" target="_blank" rel="noopener">
+
+          View
+
+        </a>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Engineering Notebook
+
+        </h3>
+
+        <p>
+
+          In Progress
+
+        </p>
+
+        <br>
+
+        <a class="btn" href="https://classroom.google.com/c/Nzg3NDE4MTYyNDMz/m/ODY1MTM1MjgyMjAz/details" target="_blank" rel="noopener">
+
+          View
+
+        </a>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Notion Documentation
+
+        </h3>
+
+        <p>
+
+          LVGL and PROS
+
+        </p>
+
+        <br>
+
+        <a class="btn" href="https://classroom.google.com/u/4/w/Nzg3NDE4MTYyNDMz/tc/ODY6MDg3MTUyOTI3" target="_blank" rel="noopener">
+
+          View
+
+        </a>
+
+      </div>
+
+      <div class="card">
+
+        <h3>
+
+          Competition Resources
+
+        </h3>
+
+        <p>
+
+          VEX V5RC
+
+        </p>
+
+        <br>
+
+        <a class="btn" href="https://classroom.google.com/u/4/w/Nzg3NDE4MTYyNDMz/tc/ODY0MDA3MzY5NTg1" target="_blank" rel="noopener">
+
+          View
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MEMBER LOGIN -->
+
+  <section id="login">
+
+    <h2 class="title">
+
+      Member Login
+
+    </h2>
+
+    <div class="card">
+
+      <p>
+
+        Access the THS Ace Robotics 72 budget tracker dashboard.
+
+      </p>
+
+      <br>
+
+      <a class="btn" href="https://pristine-ace-budget-flow.base44.app/" target="_blank" rel="noopener">
+
+        Login
+
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer style="
+
+background:#080808;
+
+color:white;
+
+padding:60px 8%;
+
+text-align:center;
+
+">
+
+    <img class="logo" src="https://cdn.phototourl.com/free/2026-07-22-388f880c-f39d-4099-a360-6cf963bf00fd.png" alt="THS Ace Robotics 72 Logo" style="margin:auto;margin-bottom:20px;">
+
+    <h2>
+
+      THS Ace Robotics 72
+
+    </h2>
+
+    <p>
+
+      VEX Team 21503A
+
+    </p>
+
+    <br>
+
+    <div class="socials">
+
+      <a class="social" href="https://www.instagram.com/thsacerobotics72/" target="_blank" rel="noopener">
+
+        <i class="fa-brands fa-instagram"></i>
+
+      </a>
+
+      <a class="social" href="https://github.com/Tyrannolavan/21503A_2027" target="_blank" rel="noopener">
+
+        <i class="fa-brands fa-github"></i>
+
+      </a>
+
+    </div>
+
+    <br>
+
+    <p style="color:#888;">
+
+      Engineering • Innovation • Competition
+
+    </p>
+
+  </footer>
+
+  <script>
+    // Mobile Navbar Toggle Functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const menuIcon = menuToggle.querySelector('i');
+
+    function toggleMenu() {
+      const isOpen = navLinks.classList.toggle('active');
+      if (isOpen) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-xmark');
+      } else {
+        menuIcon.classList.remove('fa-xmark');
+        menuIcon.classList.add('fa-bars');
+      }
+    }
+    menuToggle.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
+    });
+    // Smooth scroll reveal animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, {
+        threshold: 0.15
+      }
+    );
+    document.querySelectorAll(".card,.title")
+      .forEach(element => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(30px)";
+        element.style.transition = "all .7s ease";
+        observer.observe(element);
+      });
+  </script>
+
+</body>
+
+</html>
