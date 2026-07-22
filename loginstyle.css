@@ -1,8 +1,8 @@
 .login-body {
-    background-color: black;
+    background-color: rgb(101, 30, 30);
 }
 .login-container {
-    background-color: white;
+    background-color: rgb(255, 238, 129);
     border-radius: 10px;
     padding: 20px;
     margin: 100px auto;
@@ -10,7 +10,7 @@
     height: 500px;
 }
 .logo {
-    background-color: #f0f0f0;
+    background-color: rgb(255, 238, 129);
     height:80px;
     width: 80px;
     position: absolute;
