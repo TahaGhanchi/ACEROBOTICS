@@ -1,6 +1,7 @@
 body{
     background-image: url("BACKGROUND.png");
     border-radius: 10px;
+    font-family: "Quicksand";
 }
 .login-container {
     background-color: rgba(37, 42, 45);

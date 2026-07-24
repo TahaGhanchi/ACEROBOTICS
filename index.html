@@ -4,17 +4,26 @@
     <link rel="stylesheet"  type="text/css" href="loginstyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        font-family: Helvetica;
-        Ace budgeting
-    </title>
+    <style>
+    input[type="text"], input[type="password"] {
+        background-color: #fff08d;
+        color:#000000;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    h1 {
+        color: #fff08d;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    label {
+        color: #fff08d;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    </style>
+    <title>Ace budgeting</title>
 </head>
 <body class="login-body">
     <div class="login-container">
-        <h1
-        font-family: Helvetica;
-        <span class="ace">ACE</span> ROBOTICS
-        </h1>
+        <h1><span class="ace">ACE</span> ROBOTICS</h1>
         <form action="/login" method="POST">
            <img src="ACE_ROBOTICS_NO_BG.png" alt="Logo" class="logo">
             <label for="username">Username:</label>
