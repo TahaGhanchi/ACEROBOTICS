@@ -1,54 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet"  type="text/css" href="loginstyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Ace budgeting
+    </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-    input[type="text"], input[type="password"] {
-        background-color: #fff08d;
-        color:#000000;
-        font-family: "Roboto", sans-serif;
-    }
-    h1 {
-        color: #fff08d;
-        font-family: "Roboto", sans-serif;
-    }
-    label {
-        color: #fff08d;
-        font-family: "Roboto", sans-serif;
-    }
-    body{
-    background-image: url("BACKGROUND.png");
-    font-family: "Roboto";
-    border-radius: 10px;
-    }
-    .login-container {
-    background-color: rgba(37, 42, 45);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 100px auto;
-    width: 330px;
-    height: 500px;
-    }
-    .logo {
-    height:110px;
-    width: 110px;
-    position: absolute;
-    top: 130px;
-    left: 50%;
-    transform: translateX(-50%);
-    }
-    </style>
-    <title>Ace budgeting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&display=swap" rel="stylesheet">
 </head>
 <body class="login-body">
     <div class="login-container">
-        <h1><span class="ace">ACE</span> ROBOTICS</h1>
+        <h1 class="login-title">
+         <span class="ace">ACE</span> ROBOTICS
+        </h1>
+        <img src="ACE_ROBOTICS_LOGO_NOBG.png" alt="Logo" class="logo">
+        <div class="login-form">
         <form action="/login" method="POST">
-           <img src="ACE_ROBOTICS_NO_BG.png" alt="Logo" class="logo">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <br>
@@ -56,6 +32,8 @@
             <input type="password" id="password" name="password" required>
             <br>
             <button type="submit">Login</button>
+            </div>
+        </div>
         </form>
     </body>
 </html> 
