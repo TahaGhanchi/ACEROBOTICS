@@ -1,3 +1,17 @@
+input[type="text"], input[type="password"] {
+        background-color: #fff08d;
+        color:#000000;
+        font-family: "Roboto", sans-serif;
+    }
+    h1 {
+        color: #fff08d;
+        font-family: "Roboto"
+
+    }
+    label {
+        color: #fff08d;
+        font-family: "Roboto"
+    }
 body{
     background-image: url("Background.png"); 
   background-size: cover; 
@@ -26,7 +40,7 @@ left: 51%;
     height:110px;
     width: 110px;
     position: absolute;
-    top: 10px;
+    top: -170px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -50,4 +64,7 @@ left: 51%;
     top: 180px;
     left: 50%;
     transform: translateX(-50%);
+}
+#username {
+    color:#F3C75F;
 }
