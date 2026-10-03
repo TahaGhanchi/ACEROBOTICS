@@ -1,15 +1,16 @@
 input[type="text"], input[type="password"] {
-        background-color: #fff08d;
+        background-color: white
+;
         color:#000000;
         font-family: "Roboto", sans-serif;
     }
     h1 {
-        color: #fff08d;
+        color: #ECD540;
         font-family: "Roboto"
 
     }
     label {
-        color: #fff08d;
+        color: #ECD540;
         font-family: "Roboto"
     }
 body{
